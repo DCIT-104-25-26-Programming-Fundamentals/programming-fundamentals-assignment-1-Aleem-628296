@@ -68,3 +68,74 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    return a / b if b != 0 else None
+
+def modulus(a, b):
+    return a % b if b != 0 else None
+
+def exponentiate(a, b):
+    return a ** b
+
+def format_num(n):
+    return int(n) if n.is_integer() else n
+
+def main():
+    while True:
+        print("\n============================")
+        print("     SIMPLE CALCULATOR")
+        print("============================")
+        print("1. Addition")
+        print("2. Subtraction")
+        print("3. Multiplication")
+        print("4. Division")
+        print("5. Modulus")
+        print("6. Exponentiation")
+        print("7. Quit")
+        
+        choice = input("Select an operation (1-7): ")
+        
+        if choice == '7':
+            print("Goodbye!")
+            break
+            
+        if choice in ('1', '2', '3', '4', '5', '6'):
+            try:
+                num1 = float(input("Enter first number : "))
+                num2 = float(input("Enter second number: "))
+            except ValueError:
+                print("Error: Invalid input. Please enter numeric values.")
+                continue
+                
+            if choice == '1':
+                print(f"Result: {format_num(num1)} + {format_num(num2)} = {format_num(add(num1, num2))}")
+            elif choice == '2':
+                print(f"Result: {format_num(num1)} - {format_num(num2)} = {format_num(subtract(num1, num2))}")
+            elif choice == '3':
+                print(f"Result: {format_num(num1)} * {format_num(num2)} = {format_num(multiply(num1, num2))}")
+            elif choice == '4':
+                if num2 == 0:
+                    print("Error: Cannot divide by zero.")
+                else:
+                    print(f"Result: {format_num(num1)} / {format_num(num2)} = {divide(num1, num2):.2f}")
+            elif choice == '5':
+                if num2 == 0:
+                    print("Error: Cannot divide by zero.")
+                else:
+                    print(f"Result: {format_num(num1)} % {format_num(num2)} = {format_num(modulus(num1, num2))}")
+            elif choice == '6':
+                print(f"Result: {format_num(num1)} ** {format_num(num2)} = {format_num(exponentiate(num1, num2))}")
+        else:
+            print("Error: Invalid choice. Please select a number between 1 and 7.")
+
+if __name__ == "__main__":
+    main()
